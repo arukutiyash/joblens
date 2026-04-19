@@ -1,0 +1,307 @@
+/* ── JobLens Sidebar ─────────────────────────────────────────────── */
+
+#joblens-sidebar {
+  position: fixed;
+  top: 0;
+  right: -420px;
+  width: 400px;
+  height: 100vh;
+  background: #ffffff;
+  box-shadow: -4px 0 24px rgba(0,0,0,0.12);
+  z-index: 999999;
+  display: flex;
+  flex-direction: column;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-size: 14px;
+  color: #1a1a1a;
+  transition: right 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  overflow: hidden;
+}
+
+#joblens-sidebar.open {
+  right: 0;
+}
+
+/* Header */
+#joblens-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 14px 16px;
+  background: #1a1a2e;
+  color: white;
+  flex-shrink: 0;
+}
+
+#joblens-logo {
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: -0.3px;
+  color: #fff;
+  flex: 1;
+}
+
+#joblens-beta {
+  font-size: 10px;
+  background: #534AB7;
+  color: white;
+  padding: 2px 7px;
+  border-radius: 20px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+#joblens-close {
+  background: none;
+  border: none;
+  color: rgba(255,255,255,0.6);
+  cursor: pointer;
+  font-size: 16px;
+  padding: 4px;
+  border-radius: 4px;
+  transition: color 0.15s;
+}
+#joblens-close:hover { color: white; }
+
+/* Body */
+#joblens-body {
+  flex: 1;
+  overflow-y: auto;
+  padding: 16px;
+  scrollbar-width: thin;
+  scrollbar-color: #e0e0e0 transparent;
+}
+
+/* Toggle button */
+#joblens-toggle {
+  position: fixed;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 999998;
+  background: #1a1a2e;
+  color: white;
+  border: none;
+  width: 36px;
+  height: 56px;
+  border-radius: 8px 0 0 8px;
+  cursor: pointer;
+  font-size: 18px;
+  box-shadow: -2px 0 12px rgba(0,0,0,0.15);
+  transition: background 0.15s;
+}
+#joblens-toggle:hover { background: #534AB7; }
+
+/* Idle state */
+#joblens-idle { text-align: center; padding: 32px 8px; }
+
+/* Buttons */
+.jl-btn-primary {
+  background: #534AB7;
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  width: 100%;
+  margin-top: 12px;
+  transition: background 0.15s, transform 0.1s;
+}
+.jl-btn-primary:hover { background: #3C3489; }
+.jl-btn-primary:active { transform: scale(0.98); }
+
+.jl-btn-secondary {
+  background: transparent;
+  color: #534AB7;
+  border: 1.5px solid #534AB7;
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+.jl-btn-secondary:hover { background: #EEEDFE; }
+
+.jl-btn-ghost {
+  background: transparent;
+  color: #888;
+  border: none;
+  font-size: 12px;
+  cursor: pointer;
+  margin-top: 8px;
+  text-decoration: underline;
+}
+
+/* Loading */
+#joblens-loading { text-align: center; padding: 48px 16px; }
+
+.jl-spinner {
+  width: 40px;
+  height: 40px;
+  border: 3px solid #EEEDFE;
+  border-top-color: #534AB7;
+  border-radius: 50%;
+  animation: jl-spin 0.8s linear infinite;
+  margin: 0 auto 16px;
+}
+@keyframes jl-spin { to { transform: rotate(360deg); } }
+
+/* Error */
+#joblens-error { padding: 16px; text-align: center; }
+.jl-error-msg {
+  color: #E24B4A;
+  font-size: 13px;
+  line-height: 1.6;
+  background: #FCEBEB;
+  padding: 12px;
+  border-radius: 8px;
+  margin-bottom: 12px;
+  text-align: left;
+}
+
+/* Sections */
+.jl-section {
+  margin-bottom: 20px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #f0f0f0;
+}
+.jl-section:last-child { border-bottom: none; }
+
+.jl-section-title {
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: #888;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Score */
+.jl-score-ring {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 110px;
+  height: 110px;
+  border-radius: 50%;
+  border: 6px solid var(--score-color, #534AB7);
+  margin: 0 auto;
+  background: white;
+}
+.jl-score-num {
+  font-size: 28px;
+  font-weight: 800;
+  color: #1a1a1a;
+  line-height: 1;
+}
+.jl-score-label {
+  font-size: 11px;
+  color: #888;
+  margin-top: 2px;
+}
+
+/* Summary rows */
+.jl-summary-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  font-size: 13px;
+  color: #333;
+  line-height: 1.5;
+  margin-bottom: 8px;
+}
+
+.jl-pill {
+  font-size: 10px;
+  font-weight: 700;
+  padding: 2px 7px;
+  border-radius: 20px;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+.jl-pill-blue  { background: #E6F1FB; color: #0C447C; }
+.jl-pill-green { background: #EAF3DE; color: #27500A; }
+.jl-pill-red   { background: #FCEBEB; color: #791F1F; }
+
+/* Tags */
+.jl-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+
+.jl-tag {
+  font-size: 12px;
+  padding: 3px 9px;
+  border-radius: 20px;
+  font-weight: 500;
+}
+.jl-tag-missing { background: #FCEBEB; color: #791F1F; }
+.jl-tag-match   { background: #EAF3DE; color: #27500A; }
+
+/* ATS Advice */
+.jl-advice {
+  font-size: 13px;
+  color: #444;
+  line-height: 1.7;
+  background: #FAEEDA;
+  padding: 10px 12px;
+  border-radius: 8px;
+  border-left: 3px solid #BA7517;
+}
+
+/* People finder */
+.jl-people-link {
+  display: block;
+  color: #534AB7;
+  font-size: 13px;
+  text-decoration: none;
+  padding: 8px 10px;
+  border-radius: 6px;
+  margin-bottom: 4px;
+  background: #EEEDFE;
+  transition: background 0.15s;
+  font-weight: 500;
+}
+.jl-people-link:hover { background: #CECBF6; }
+
+/* Cover letter */
+.jl-cover {
+  font-size: 12px;
+  color: #444;
+  line-height: 1.8;
+  background: #f9f9f9;
+  padding: 12px;
+  border-radius: 8px;
+  max-height: 220px;
+  overflow-y: auto;
+  border: 1px solid #eee;
+}
+
+.jl-copy-btn {
+  background: #534AB7;
+  color: white;
+  border: none;
+  font-size: 10px;
+  padding: 2px 8px;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-left: auto;
+  font-weight: 600;
+}
+.jl-copy-btn:hover { background: #3C3489; }
+
+/* Hints */
+.jl-hint {
+  font-size: 13px;
+  color: #666;
+  line-height: 1.6;
+  margin-bottom: 4px;
+}
+.jl-hint-small {
+  font-size: 11px;
+  color: #aaa;
+}
